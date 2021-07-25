@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import departmentAPI from "../api/departmentAPI";
@@ -9,6 +10,7 @@ function NewDepartment() {
   const [isLoading, setIsLoading] = useState(false);
   function addDepartmentHandler(departmentData) {
     setIsLoading(true);
+    console.log("ccalling api");
     departmentAPI
       .newDepartment(departmentData.title, departmentData.description)
       .then((response) => {
