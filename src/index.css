@@ -18,3 +18,30 @@ h2 {
   font-size: 1.5rem;
   color: #2c292b;
 }
+
+button.simple {
+  font: inherit;
+  cursor: pointer;
+  color: #160077;
+  border: 1px solid #160077;
+  background-color: transparent;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+
+button.simple:hover,
+button.simple:active {
+  background-color: #e2e2ff;
+}
+
+.flex-container {
+  display: flex;
+}
+.flex-item {
+  text-align: center;
+  flex-grow: 1;
+}
+.half-width {
+  text-align: center;
+  width: 38rem;
+}

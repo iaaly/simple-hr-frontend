@@ -6,7 +6,9 @@ function DepartmentItem(props) {
   const history = useHistory();
 
   let employeesListHandler = () => {
-    history.push("/departments/" + props.department.id + "/employees");
+    history.push("/departments/" + props.department.id + "/employees", {
+      depName: props.department.title,
+    });
   };
 
   return (
@@ -14,12 +16,13 @@ function DepartmentItem(props) {
       <Card>
         <div className={classes.content}>
           <h3>{props.department.title}</h3>
-          <p>{props.department.description} employees</p>
-          <p>{props.department.headCount} employees</p>
-          <p>{props.department.maxSalary} highest salary</p>
+          <p>{props.department.description}</p>
         </div>
         <div className={classes.actions}>
-          <button onClick={employeesListHandler}>Employees list</button>
+          <button className="simple" onClick={employeesListHandler}>
+            {props.department.employees_count}{" "}
+            {props.department.employees_count == 1 ? "employee" : "employees"}
+          </button>
         </div>
       </Card>
     </li>

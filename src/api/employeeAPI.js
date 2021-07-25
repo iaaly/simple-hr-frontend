@@ -6,20 +6,12 @@ const api = {
       department_id: departmentId,
     });
   },
-  newEmployee(
-    departmentId,
-    firstName,
-    lastName,
-    position,
-    salaryAmount,
-    salaryCurrency
-  ) {
+  newEmployee(departmentId, firstName, lastName, position, salaryAmount) {
     return API.post(`/employees`, {
       first_name: firstName,
       last_name: lastName,
       position: position,
       salary_amount: salaryAmount,
-      salary_currency: salaryCurrency,
       department_id: departmentId,
     });
   },

@@ -2,11 +2,11 @@ import EmployeeItem from "./EmployeeItem";
 
 function EmployeesList(props) {
   return (
-    <ul>
+    <div>
       {props.employees.map((emp) => {
         return <EmployeeItem emp={emp} key={emp.id} />;
       })}
-    </ul>
+    </div>
   );
 }
 

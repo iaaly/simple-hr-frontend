@@ -6,19 +6,12 @@ import EmployeesList from "../components/employees/EmployeesList";
 function Employees(props) {
   const history = useHistory();
 
-  function clickHandler() {
-    history.push(
-      "/departments/" + props.match.params.departmentId + "/employees/new"
-    );
-  }
-
   const [loadedEmployees, setLoadedEmployees] = useState([]);
 
   const fetchData = useCallback(() => {
     return employeeAPI
       .employeesList(props.match.params.departmentId)
       .then((response) => {
-        console.log("gpt");
         setLoadedEmployees(response.data);
       })
       .catch((error) => {
@@ -28,12 +21,21 @@ function Employees(props) {
 
   useEffect(fetchData, [fetchData]);
 
+  function addEmployeeHandler() {
+    // Go to the Add employee form
+    history.push(
+      "/departments/" + props.match.params.departmentId + "/employees/new"
+    );
+  }
+
   return (
     <div>
-      <h1>Employees</h1>
-      <span>{props.match.params.departmentId}</span>
-      <button onClick={clickHandler}>Add new Employee</button>
+      <h1>Employees </h1>
+
       <EmployeesList employees={loadedEmployees} />
+      <button className="simple" onClick={addEmployeeHandler}>
+        + New employee
+      </button>
     </div>
   );
 }

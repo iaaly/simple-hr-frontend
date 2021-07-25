@@ -1,0 +1,44 @@
+.reportTable {
+  background-color: #eeeeee;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+.reportTable td,
+.reportTable th {
+  padding: 3px 3px;
+  width: 50%;
+}
+.reportTable tbody td {
+  font-size: 17px;
+}
+.reportTable tr:nth-child(even) {
+  background: #e2e2ff;
+}
+.reportTable thead {
+  background: #160077;
+  border-bottom: 2px solid #444444;
+}
+.reportTable thead th {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  border-left: 2px solid #e2e2ff;
+}
+.reportTable thead th:first-child {
+  border-left: none;
+}
+
+.reportTable tfoot td {
+  font-size: 17px;
+}
+.reportTable tfoot .links {
+  text-align: right;
+}
+.reportTable tfoot .links a {
+  display: inline-block;
+  background: #1c6ea4;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 5px;
+}

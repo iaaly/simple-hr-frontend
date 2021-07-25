@@ -1,0 +1,30 @@
+.mainDiv {
+  margin: 0.5rem;
+  margin-left: 0;
+}
+.content {
+  text-align: left;
+  padding: 1rem;
+  position: relative;
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  color: #2c292b;
+  margin: 0;
+}
+
+span.position {
+  font-size: 0.8em;
+}
+img.avatar {
+  width: auto;
+  height: 5rem;
+  position: absolute;
+  top: 0.5rem;
+  top: 0.5rem;
+}
+
+div.employeeInfo {
+  margin-left: 6rem;
+}

@@ -13,8 +13,7 @@ function NewEmployee(props) {
         data.firstName,
         data.lastName,
         data.position,
-        data.salaryAmount,
-        data.salaryCurrency
+        data.salaryAmount
       )
       .then((response) => {
         // handle success
