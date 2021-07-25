@@ -21,6 +21,7 @@ function EmployeeItem(props) {
             />
           </div>
           <img
+            alt=""
             className={classes.avatar}
             src="https://kingstonplaza.com/wp-content/uploads/2015/07/generic-avatar.png"
           />

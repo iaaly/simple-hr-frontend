@@ -1,16 +1,19 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import DepartmentsList from "../components/departments/DepartmentsList";
 import departmentAPI from "../api/departmentAPI";
+import AppContext from "../store/app-context";
 
 function Departments() {
   const [loadedDepartments, setLoadedDepartments] = useState([]);
+
+  const appCtx = useContext(AppContext);
 
   const fetchData = useCallback(() => {
     return departmentAPI
       .departmentsList()
       .then((response) => {
-        console.log("gpt");
         setLoadedDepartments(response.data);
+        appCtx.updateDepartments(response.data);
       })
       .catch((error) => {
         console.log(error);

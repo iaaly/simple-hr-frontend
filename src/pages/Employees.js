@@ -1,10 +1,16 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import employeeAPI from "../api/employeeAPI";
 import { useHistory } from "react-router-dom";
 import EmployeesList from "../components/employees/EmployeesList";
+import AppContext from "../store/app-context";
 
 function Employees(props) {
   const history = useHistory();
+
+  const appCtx = useContext(AppContext);
+  const department = appCtx.departments.find(
+    (d) => d.id == props.match.params.departmentId
+  );
 
   const [loadedEmployees, setLoadedEmployees] = useState([]);
 
@@ -30,7 +36,7 @@ function Employees(props) {
 
   return (
     <div>
-      <h1>Employees </h1>
+      <h1>{department ? department.title : ""} Employees</h1>
 
       <EmployeesList employees={loadedEmployees} />
       <button className="simple" onClick={addEmployeeHandler}>

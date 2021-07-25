@@ -21,7 +21,7 @@ function DepartmentItem(props) {
         <div className={classes.actions}>
           <button className="simple" onClick={employeesListHandler}>
             {props.department.employees_count}{" "}
-            {props.department.employees_count == 1 ? "employee" : "employees"}
+            {props.department.employees_count === 1 ? "employee" : "employees"}
           </button>
         </div>
       </Card>

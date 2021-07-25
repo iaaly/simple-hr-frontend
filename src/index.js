@@ -4,10 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
 import App from "./App";
+import { AppContextProvider } from "./store/app-context";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <AppContextProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </AppContextProvider>,
   document.getElementById("root")
 );
