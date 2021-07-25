@@ -1,8 +1,6 @@
 # Simple HR
 This project repo is the frontend react part of the Simple HR demo app: https://ui-simplehr.herokuapp.com/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## App Features
 
 - Add and view departments
