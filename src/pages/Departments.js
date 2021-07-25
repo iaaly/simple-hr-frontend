@@ -5,6 +5,7 @@ import AppContext from "../store/app-context";
 
 function Departments() {
   const [loadedDepartments, setLoadedDepartments] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
 
   const appCtx = useContext(AppContext);
 
@@ -16,11 +17,18 @@ function Departments() {
         appCtx.updateDepartments(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
+      })
+      .then(function () {
+        setisLoading(false);
       });
   }, []);
 
   useEffect(fetchData, [fetchData]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>

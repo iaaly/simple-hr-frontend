@@ -5,6 +5,7 @@ import Card from "../ui/Card";
 
 function ReportTable(props) {
   const [loadedReport, setLoadedReport] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
 
   const fetchReport = useCallback(() => {
     reportAPI
@@ -12,7 +13,10 @@ function ReportTable(props) {
       .then((response) => {
         setLoadedReport(response.data);
       })
-      .catch(console.log);
+      .catch(console.error)
+      .then(() => {
+        setisLoading(false);
+      });
   }, [props.reportId]);
 
   useEffect(fetchReport, [fetchReport]);
@@ -22,8 +26,8 @@ function ReportTable(props) {
       <table className={classes.reportTable}>
         <thead>
           <tr>
-            <th>{props.titleLabel}</th>
-            <th>{props.valueLabel}</th>
+            <th>{isLoading ? "Loading..." : props.titleLabel}</th>
+            <th>{isLoading ? "Loading..." : props.valueLabel}</th>
           </tr>
         </thead>
         <tbody>

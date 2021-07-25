@@ -6,7 +6,9 @@ import NewDepartmentForm from "../components/departments/NewDepartmentForm";
 
 function NewDepartment() {
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
   function addDepartmentHandler(departmentData) {
+    setIsLoading(true);
     departmentAPI
       .newDepartment(departmentData.title, departmentData.description)
       .then((response) => {
@@ -14,15 +16,15 @@ function NewDepartment() {
         console.log(response);
         history.push("/departments");
       })
-      .catch((error) => {
-        // handle error
-        console.log(error);
+      .catch(console.error)
+      .then(() => {
+        setIsLoading(false);
       });
   }
 
   return (
     <section>
-      <h1>New Department</h1>
+      <h1>{isLoading ? "Loading..." : "New Department"}</h1>
       <NewDepartmentForm onAddDepartment={addDepartmentHandler} />
     </section>
   );

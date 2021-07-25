@@ -4,6 +4,7 @@ import { Doughnut } from "react-chartjs-2";
 
 function EmployeesDoughnut(props) {
   const [loadedReport, setLoadedReport] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
 
   const fetchReport = useCallback(() => {
     reportAPI
@@ -11,7 +12,10 @@ function EmployeesDoughnut(props) {
       .then((response) => {
         setLoadedReport(response.data);
       })
-      .catch(console.log);
+      .catch(console.error)
+      .then(() => {
+        setisLoading(false);
+      });
   }, []);
 
   useEffect(fetchReport, [fetchReport]);
@@ -38,6 +42,10 @@ function EmployeesDoughnut(props) {
     plugins: {
       legend: {
         position: "bottom",
+      },
+      title: {
+        display: isLoading,
+        text: "Loading...",
       },
     },
   };

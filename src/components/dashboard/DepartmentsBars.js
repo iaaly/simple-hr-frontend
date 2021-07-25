@@ -4,6 +4,7 @@ import { Bar } from "react-chartjs-2";
 
 function DepartmentsBar(props) {
   const [loadedReport, setLoadedReport] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
 
   const fetchReport = useCallback(() => {
     reportAPI
@@ -11,7 +12,10 @@ function DepartmentsBar(props) {
       .then((response) => {
         setLoadedReport(response.data);
       })
-      .catch(console.log);
+      .catch(console.error)
+      .then(() => {
+        setisLoading(false);
+      });
   }, []);
 
   useEffect(fetchReport, [fetchReport]);
@@ -50,8 +54,8 @@ function DepartmentsBar(props) {
         position: "bottom",
       },
       title: {
-        display: false,
-        text: "Top Salaries across departments",
+        display: isLoading,
+        text: "Loading...",
       },
     },
   };

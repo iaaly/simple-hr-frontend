@@ -8,6 +8,7 @@ function Employees(props) {
   const history = useHistory();
 
   const appCtx = useContext(AppContext);
+  const [isLoading, setisLoading] = useState(true);
   const department = appCtx.departments.find(
     (d) => d.id == props.match.params.departmentId
   );
@@ -20,8 +21,9 @@ function Employees(props) {
       .then((response) => {
         setLoadedEmployees(response.data);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(console.error)
+      .then(() => {
+        setisLoading(false);
       });
   }, [props.match.params.departmentId]);
 
@@ -32,6 +34,10 @@ function Employees(props) {
     history.push(
       "/departments/" + props.match.params.departmentId + "/employees/new"
     );
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   return (
